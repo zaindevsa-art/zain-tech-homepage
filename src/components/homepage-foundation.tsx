@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Code2, Megaphone, Menu, Monitor, Smartphone, X } from "lucide-react";
+import { heroBusinesswomanDataUrl } from "@/assets/hero-image-data";
 import { useState } from "react";
 
 const navItems = [
@@ -164,7 +165,7 @@ export function HomepageFoundation() {
           <div className="zt-hero-visual">
             <div className="zt-hero-image-shell">
               <Image
-                src="/home/hero-businesswoman.webp"
+                src={heroBusinesswomanDataUrl}
                 alt="رائدة أعمال تستخدم حاسبًا محمولًا"
                 fill
                 priority
