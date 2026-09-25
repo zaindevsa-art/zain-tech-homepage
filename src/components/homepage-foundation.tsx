@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Code2, Megaphone, Menu, Monitor, Smartphone, X } from "lucide-react";
 import { useState } from "react";
 
@@ -82,7 +83,7 @@ export function HomepageFoundation() {
 
       <header className="zt-header">
         <div className="zt-container zt-header-inner">
-          <a href="/" className="zt-brand" aria-label="Zain Tech" onClick={closeMobileMenu}>
+          <Link href="/" className="zt-brand" aria-label="Zain Tech" onClick={closeMobileMenu}>
             <Image
               src="/optimized/logo-220.webp"
               alt="Zain Tech"
@@ -91,7 +92,7 @@ export function HomepageFoundation() {
               priority
               className="zt-brand-logo"
             />
-          </a>
+          </Link>
 
           <button
             type="button"
