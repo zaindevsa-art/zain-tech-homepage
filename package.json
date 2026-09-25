@@ -2,13 +2,17 @@
   "name": "zain-tech-homepage",
   "version": "0.1.0",
   "private": true,
-  "engines": { "node": ">=20.9.0" },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "predev": "node scripts/restore-hero-image.cjs",
+    "prebuild": "node scripts/restore-hero-image.cjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4",
