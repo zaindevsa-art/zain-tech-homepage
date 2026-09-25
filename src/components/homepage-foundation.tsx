@@ -168,6 +168,7 @@ export function HomepageFoundation() {
                 alt="رائدة أعمال تستخدم حاسبًا محمولًا"
                 fill
                 priority
+                unoptimized
                 sizes="(max-width: 960px) 100vw, 50vw"
                 className="zt-hero-image"
               />
