@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --zt-bg: #f7f9fc;
+  --zt-surface: #ffffff;
+  --zt-ink: #0f1b33;
+  --zt-muted: #667085;
+  --zt-line: #e6eaf0;
+  --zt-primary: #1265d8;
+  --zt-accent: #10b981;
+  --zt-container: 1240px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--zt-bg);
+  color: var(--zt-ink);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.zt-home {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.zt-container {
+  width: min(calc(100% - 32px), var(--zt-container));
+  margin-inline: auto;
+}
+
+.zt-foundation {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding-block: 96px;
+  background:
+    radial-gradient(circle at 14% 22%, rgba(18, 101, 216, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 72%, rgba(16, 185, 129, 0.1), transparent 30%),
+    var(--zt-bg);
+}
+
+.zt-foundation .zt-container {
+  max-width: 760px;
+}
+
+.zt-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--zt-primary);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.zt-foundation h1 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.zt-foundation p {
+  max-width: 680px;
+  margin: 22px 0 0;
+  color: var(--zt-muted);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .zt-container {
+    width: min(calc(100% - 24px), var(--zt-container));
+  }
+
+  .zt-foundation {
+    padding-block: 72px;
+  }
+}
