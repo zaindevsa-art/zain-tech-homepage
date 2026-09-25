@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Code2, Megaphone, Menu, Monitor, Smartphone, X } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
@@ -9,6 +9,13 @@ const navItems = [
   { label: "المميزات", href: "#zain-features" },
   { label: "خدماتنا", href: "#zain-digital-services" },
   { label: "التنزيلات", href: "/downloads" },
+];
+
+const capabilityIcons = [
+  { label: "التسويق", Icon: Megaphone },
+  { label: "المواقع", Icon: Monitor },
+  { label: "التطبيقات", Icon: Smartphone },
+  { label: "البرمجيات", Icon: Code2 },
 ];
 
 export function HomepageFoundation() {
@@ -83,6 +90,23 @@ export function HomepageFoundation() {
               <a className="zt-button zt-button-secondary" href="#zain-digital-services">
                 استكشف حلولنا
               </a>
+            </div>
+
+            <div className="zt-hero-capabilities" aria-label="مجالات الحلول والخدمات">
+              <div className="zt-capability-icons" aria-label="التسويق والمواقع والتطبيقات والبرمجيات">
+                {capabilityIcons.map(({ label, Icon }) => (
+                  <span className="zt-capability-icon" key={label} title={label} aria-label={label}>
+                    <Icon size={19} strokeWidth={1.8} aria-hidden="true" />
+                  </span>
+                ))}
+              </div>
+
+              <div className="zt-capability-copy">
+                <strong>10+ حلول وخدمات</strong>
+                <p>
+                  من التسويق والتصميم إلى البرمجة والأنظمة — منظومة واحدة تساعد مشروعك على الانطلاق والنمو.
+                </p>
+              </div>
             </div>
           </div>
         </div>
