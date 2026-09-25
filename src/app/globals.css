@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --zt-bg: #f7f9fc;
+  --zt-bg: #f7f7f3;
   --zt-surface: #ffffff;
-  --zt-ink: #0f1b33;
-  --zt-muted: #667085;
-  --zt-line: #e6eaf0;
-  --zt-primary: #1265d8;
-  --zt-accent: #10b981;
+  --zt-ink: #101820;
+  --zt-muted: #6e7777;
+  --zt-line: #e6eae7;
+  --zt-primary: #0c5653;
+  --zt-primary-dark: #073d3b;
+  --zt-soft-mint: #eff7f2;
   --zt-container: 1240px;
 }
 
@@ -23,7 +24,8 @@ body {
   margin: 0;
   background: var(--zt-bg);
   color: var(--zt-ink);
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: var(--font-tajawal), sans-serif;
+  font-weight: 500;
 }
 
 button,
@@ -33,61 +35,163 @@ textarea {
   font: inherit;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .zt-home {
   min-height: 100vh;
   overflow-x: clip;
+  background: var(--zt-bg);
 }
 
 .zt-container {
-  width: min(calc(100% - 32px), var(--zt-container));
+  width: min(calc(100% - 40px), var(--zt-container));
   margin-inline: auto;
 }
 
-.zt-foundation {
-  min-height: 100vh;
-  display: grid;
+.zt-topbar {
+  min-height: 38px;
+  display: flex;
   align-items: center;
-  padding-block: 96px;
-  background:
-    radial-gradient(circle at 14% 22%, rgba(18, 101, 216, 0.12), transparent 34%),
-    radial-gradient(circle at 88% 72%, rgba(16, 185, 129, 0.1), transparent 30%),
-    var(--zt-bg);
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--zt-primary);
+  color: #ffffff;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 500;
 }
 
-.zt-foundation .zt-container {
-  max-width: 760px;
+.zt-header {
+  background: var(--zt-surface);
+  border-bottom: 1px solid var(--zt-line);
+}
+
+.zt-header-inner {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.zt-brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.zt-brand-logo {
+  width: 132px;
+  height: auto;
+  object-fit: contain;
+}
+
+.zt-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.zt-nav a {
+  position: relative;
+  padding-block: 28px;
+  color: var(--zt-ink);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.zt-nav a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 20px;
+  height: 1px;
+  background: var(--zt-primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.zt-nav a:hover::after,
+.zt-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.zt-nav a:focus-visible,
+.zt-topbar:focus-visible,
+.zt-brand:focus-visible {
+  outline: 2px solid var(--zt-primary);
+  outline-offset: 3px;
+}
+
+.zt-hero-start {
+  min-height: 340px;
+  padding-block: 58px 96px;
 }
 
 .zt-eyebrow {
-  display: inline-block;
-  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  background: var(--zt-soft-mint);
   color: var(--zt-primary);
   font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
-.zt-foundation h1 {
-  margin: 0;
-  font-size: clamp(42px, 6vw, 78px);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-}
-
-.zt-foundation p {
-  max-width: 680px;
-  margin: 22px 0 0;
-  color: var(--zt-muted);
-  font-size: clamp(17px, 2vw, 21px);
-  line-height: 1.9;
-}
-
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .zt-container {
     width: min(calc(100% - 24px), var(--zt-container));
   }
 
-  .zt-foundation {
-    padding-block: 72px;
+  .zt-topbar {
+    font-size: 12px;
+    padding-inline: 12px;
+  }
+
+  .zt-header-inner {
+    min-height: auto;
+    padding-block: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .zt-brand-logo {
+    width: 116px;
+  }
+
+  .zt-nav {
+    width: 100%;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .zt-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .zt-nav a {
+    padding-block: 8px;
+    font-size: 14px;
+  }
+
+  .zt-nav a::after {
+    bottom: 2px;
+  }
+
+  .zt-hero-start {
+    min-height: 260px;
+    padding-block: 38px 72px;
   }
 }
