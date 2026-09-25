@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const navItems = [
   { label: "الأنظمة", href: "#zain-systems" },
@@ -8,6 +12,10 @@ const navItems = [
 ];
 
 export function HomepageFoundation() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <main className="zt-home">
       <a className="zt-topbar" href="#zain-digital-services" aria-label="باقة البداية للتسويق الرقمي">
@@ -17,7 +25,7 @@ export function HomepageFoundation() {
 
       <header className="zt-header">
         <div className="zt-container zt-header-inner">
-          <a href="/" className="zt-brand" aria-label="Zain Tech">
+          <a href="/" className="zt-brand" aria-label="Zain Tech" onClick={closeMobileMenu}>
             <Image
               src="/optimized/logo-220.webp"
               alt="Zain Tech"
@@ -28,9 +36,24 @@ export function HomepageFoundation() {
             />
           </a>
 
-          <nav className="zt-nav" aria-label="الأقسام الرئيسية">
+          <button
+            type="button"
+            className="zt-mobile-menu-button"
+            aria-label={mobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="zt-main-navigation"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+          >
+            {mobileMenuOpen ? <X size={22} strokeWidth={1.8} /> : <Menu size={24} strokeWidth={1.8} />}
+          </button>
+
+          <nav
+            id="zt-main-navigation"
+            className={`zt-nav ${mobileMenuOpen ? "is-open" : ""}`}
+            aria-label="الأقسام الرئيسية"
+          >
             {navItems.map((item) => (
-              <a key={item.label} href={item.href}>
+              <a key={item.label} href={item.href} onClick={closeMobileMenu}>
                 {item.label}
               </a>
             ))}
