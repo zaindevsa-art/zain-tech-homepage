@@ -313,14 +313,14 @@ a { color: inherit; text-decoration: none; }
 
 .zt-hero-image {
   object-fit: cover;
-  object-position: center center;
+  object-position: right center;
 }
 
 .zt-offer-card {
   position: absolute;
   z-index: 2;
-  inset-inline-end: -24px;
-  bottom: 0;
+  inset-inline-end: -72px;
+  bottom: 8px;
   width: min(430px, 88%);
   padding: 24px;
   border: 1px solid rgba(230, 234, 231, 0.94);
@@ -468,7 +468,7 @@ a { color: inherit; text-decoration: none; }
   }
 
   .zt-offer-card {
-    inset-inline-end: 0;
+    inset-inline-end: -36px;
   }
 }
 
