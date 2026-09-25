@@ -163,7 +163,7 @@ a {
 }
 
 .zt-hero-start {
-  min-height: 560px;
+  min-height: 620px;
   padding-block: 72px 110px;
 }
 
@@ -258,6 +258,75 @@ a {
   background: rgba(255, 255, 255, 0.52);
 }
 
+.zt-hero-capabilities {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 700px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--zt-line);
+}
+
+.zt-capability-icons {
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  padding-inline-start: 3px;
+}
+
+.zt-capability-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-inline-start: -10px;
+  border: 3px solid var(--zt-bg);
+  border-radius: 50%;
+  background: var(--zt-surface);
+  color: var(--zt-primary);
+  box-shadow: 0 7px 18px rgba(7, 61, 59, 0.08);
+}
+
+.zt-capability-icon:first-child {
+  margin-inline-start: 0;
+}
+
+.zt-capability-icon:nth-child(2) {
+  background: #f2f8f4;
+}
+
+.zt-capability-icon:nth-child(3) {
+  background: #e8f4ef;
+}
+
+.zt-capability-icon:nth-child(4) {
+  background: #dff1e6;
+  color: var(--zt-primary-dark);
+}
+
+.zt-capability-copy {
+  min-width: 0;
+}
+
+.zt-capability-copy strong {
+  display: block;
+  color: var(--zt-ink);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.zt-capability-copy p {
+  max-width: 510px;
+  margin: 8px 0 0;
+  color: var(--zt-muted);
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
 @media (max-width: 760px) {
   .zt-container {
     width: min(calc(100% - 24px), var(--zt-container));
@@ -332,7 +401,7 @@ a {
   }
 
   .zt-hero-start {
-    min-height: 520px;
+    min-height: 600px;
     padding-block: 46px 80px;
   }
 
@@ -358,6 +427,37 @@ a {
     min-height: 46px;
     padding-inline: 18px;
     font-size: 14px;
+  }
+
+  .zt-hero-capabilities {
+    gap: 16px;
+    margin-top: 38px;
+    padding-top: 24px;
+  }
+
+  .zt-capability-icon {
+    width: 42px;
+    height: 42px;
+    margin-inline-start: -9px;
+    border-width: 2px;
+  }
+
+  .zt-capability-copy strong {
+    font-size: 28px;
+  }
+
+  .zt-capability-copy p {
+    margin-top: 7px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 520px) {
+  .zt-hero-capabilities {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
   }
 }
 
