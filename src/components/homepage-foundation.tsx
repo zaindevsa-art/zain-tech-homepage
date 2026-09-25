@@ -18,10 +18,60 @@ const capabilityIcons = [
   { label: "البرمجيات", Icon: Code2 },
 ];
 
+const serviceOffers = [
+  {
+    id: "marketing",
+    service: "التسويق الرقمي",
+    packageName: "باقة البداية",
+    price: "1,500 ر.س",
+    duration: "شهر واحد",
+    features: ["12 منشورًا", "12 تصميمًا", "إدارة منصتين"],
+    cta: "اطلب الباقة",
+  },
+  {
+    id: "systems",
+    service: "الأنظمة",
+    packageName: "نظام مخصص",
+    price: "عرض مخصص",
+    duration: "حسب نطاق المشروع",
+    features: ["تحليل سير العمل", "لوحة إدارة", "صلاحيات وتقارير"],
+    cta: "اطلب عرضًا",
+  },
+  {
+    id: "websites",
+    service: "المواقع",
+    packageName: "موقع أعمال مخصص",
+    price: "عرض مخصص",
+    duration: "حسب المتطلبات",
+    features: ["تصميم واجهة", "تطوير متجاوب", "تجهيز للإطلاق"],
+    cta: "اطلب عرضًا",
+  },
+  {
+    id: "apps",
+    service: "التطبيقات",
+    packageName: "تطبيق مخصص",
+    price: "عرض مخصص",
+    duration: "حسب نطاق المشروع",
+    features: ["تجربة مستخدم", "تطوير التطبيق", "اختبار وإطلاق"],
+    cta: "اطلب عرضًا",
+  },
+  {
+    id: "software",
+    service: "البرمجيات",
+    packageName: "برمجية مخصصة",
+    price: "عرض مخصص",
+    duration: "حسب نطاق المشروع",
+    features: ["تحليل الاحتياج", "تطوير مخصص", "دعم وتوسعة"],
+    cta: "اطلب عرضًا",
+  },
+] as const;
+
 export function HomepageFoundation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(serviceOffers[0].id);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+  const offer = serviceOffers.find((item) => item.id === selectedService) ?? serviceOffers[0];
 
   return (
     <main className="zt-home">
@@ -69,7 +119,7 @@ export function HomepageFoundation() {
       </header>
 
       <section className="zt-hero-start" aria-labelledby="zt-hero-title">
-        <div className="zt-container">
+        <div className="zt-container zt-hero-grid">
           <div className="zt-hero-copy">
             <span className="zt-eyebrow">تقنية تصنع فرقًا</span>
 
@@ -107,6 +157,65 @@ export function HomepageFoundation() {
                   من التسويق والتصميم إلى البرمجة والأنظمة — منظومة واحدة تساعد مشروعك على الانطلاق والنمو.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div className="zt-hero-visual">
+            <div className="zt-hero-image-shell">
+              <Image
+                src="/home/hero-businesswoman.webp"
+                alt="رائدة أعمال تستخدم حاسبًا محمولًا"
+                fill
+                priority
+                sizes="(max-width: 960px) 100vw, 50vw"
+                className="zt-hero-image"
+              />
+            </div>
+
+            <div className="zt-offer-card">
+              <div className="zt-offer-heading">
+                <span>ابدأ بخطوة واضحة</span>
+                <small>اختر الخدمة وشاهد التفاصيل المناسبة مباشرة</small>
+              </div>
+
+              <div className="zt-offer-fields">
+                <label className="zt-offer-field">
+                  <span>الخدمة</span>
+                  <select
+                    value={selectedService}
+                    onChange={(event) => setSelectedService(event.target.value as typeof selectedService)}
+                    aria-label="اختر الخدمة"
+                  >
+                    {serviceOffers.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.service}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <div className="zt-offer-field">
+                  <span>الباقة</span>
+                  <strong>{offer.packageName}</strong>
+                </div>
+              </div>
+
+              <div className="zt-offer-price">
+                <strong>{offer.price}</strong>
+                <span>{offer.duration}</span>
+              </div>
+
+              <div className="zt-offer-features" aria-label="تفاصيل الخدمة">
+                {offer.features.map((feature) => (
+                  <span key={feature}>{feature}</span>
+                ))}
+              </div>
+
+              <a className="zt-offer-cta" href="#contact" aria-label={`${offer.cta} - ${offer.service}`}>
+                {offer.cta}
+              </a>
+
+              <p className="zt-offer-note">يمكنك أيضًا طلب عرض مخصص لنشاطك</p>
             </div>
           </div>
         </div>
