@@ -67,11 +67,14 @@ a {
 }
 
 .zt-header {
+  position: relative;
+  z-index: 40;
   background: var(--zt-surface);
   border-bottom: 1px solid var(--zt-line);
 }
 
 .zt-header-inner {
+  position: relative;
   min-height: 78px;
   display: flex;
   align-items: center;
@@ -88,6 +91,34 @@ a {
   width: 132px;
   height: auto;
   object-fit: contain;
+}
+
+.zt-mobile-menu-button {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid var(--zt-line);
+  border-radius: 12px;
+  background: var(--zt-surface);
+  color: var(--zt-primary-dark);
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.zt-mobile-menu-button:hover {
+  background: var(--zt-soft-mint);
+  border-color: rgba(12, 86, 83, 0.24);
+}
+
+.zt-mobile-menu-button:active {
+  transform: scale(0.97);
 }
 
 .zt-nav {
@@ -124,7 +155,8 @@ a {
 
 .zt-nav a:focus-visible,
 .zt-topbar:focus-visible,
-.zt-brand:focus-visible {
+.zt-brand:focus-visible,
+.zt-mobile-menu-button:focus-visible {
   outline: 2px solid var(--zt-primary);
   outline-offset: 3px;
 }
@@ -153,45 +185,83 @@ a {
   }
 
   .zt-topbar {
-    font-size: 12px;
-    padding-inline: 12px;
+    min-height: 36px;
+    padding: 7px 12px;
+    font-size: 11.5px;
+    line-height: 1.55;
   }
 
   .zt-header-inner {
-    min-height: auto;
-    padding-block: 14px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    min-height: 74px;
+    justify-content: space-between;
+    gap: 16px;
   }
 
   .zt-brand-logo {
-    width: 116px;
+    width: 120px;
+  }
+
+  .zt-mobile-menu-button {
+    display: inline-flex;
   }
 
   .zt-nav {
-    width: 100%;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    inset-inline: 0;
+    display: grid;
+    gap: 4px;
+    padding: 10px;
+    border: 1px solid var(--zt-line);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 18px 50px rgba(16, 24, 32, 0.12);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.985);
+    transform-origin: top center;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease,
+      visibility 180ms ease;
   }
 
-  .zt-nav::-webkit-scrollbar {
-    display: none;
+  .zt-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
   }
 
   .zt-nav a {
-    padding-block: 8px;
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 10px;
+    color: var(--zt-ink);
     font-size: 14px;
+    line-height: 1.5;
   }
 
   .zt-nav a::after {
-    bottom: 2px;
+    display: none;
+  }
+
+  .zt-nav a:hover,
+  .zt-nav a:focus-visible {
+    background: var(--zt-soft-mint);
+    color: var(--zt-primary-dark);
   }
 
   .zt-hero-start {
     min-height: 260px;
     padding-block: 38px 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zt-mobile-menu-button,
+  .zt-nav,
+  .zt-nav a::after {
+    transition: none;
   }
 }
