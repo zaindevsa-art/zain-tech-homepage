@@ -61,9 +61,30 @@ export function HomepageFoundation() {
         </div>
       </header>
 
-      <section className="zt-hero-start" aria-label="بداية الواجهة الرئيسية">
+      <section className="zt-hero-start" aria-labelledby="zt-hero-title">
         <div className="zt-container">
-          <span className="zt-eyebrow">تقنية تصنع فرقًا</span>
+          <div className="zt-hero-copy">
+            <span className="zt-eyebrow">تقنية تصنع فرقًا</span>
+
+            <h1 id="zt-hero-title" className="zt-hero-title">
+              <span>نحوّل فكرتك</span>
+              <span>إلى منظومة رقمية</span>
+              <span>تنمو مع أعمالك</span>
+            </h1>
+
+            <p className="zt-hero-description">
+              مواقع وتطبيقات وتسويق وبرمجيات مخصصة — نأخذ احتياج مشروعك من الفكرة إلى الإطلاق والتطوير
+            </p>
+
+            <div className="zt-hero-actions" aria-label="إجراءات البداية">
+              <a className="zt-button zt-button-primary" href="#contact">
+                ابدأ مشروعك
+              </a>
+              <a className="zt-button zt-button-secondary" href="#zain-digital-services">
+                استكشف حلولنا
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
