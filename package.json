@@ -10,9 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
-    "predev": "node scripts/restore-hero-image.cjs",
-    "prebuild": "node scripts/restore-hero-image.cjs"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4",
